@@ -4,7 +4,7 @@
          {
             "id":1,
             "company":"",
-            "title": ""
+            "title": "",
             "qualification":"",
             "batch":"web developer",
             "lastDate":"",
@@ -15,9 +15,9 @@
                }
             ]
          },
-         {
+        {
             "id":2,
-            "company":"TCS",
+            "company":"",
             "title": "",
             "qualification":"",
             "batch":"web developer",
@@ -30,4 +30,5 @@
             ]
          }
      ]
+   }
 }
