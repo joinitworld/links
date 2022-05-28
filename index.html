@@ -48,7 +48,17 @@
 </body>
 </html>
 <script>
-    fetch('./hiring.json')
+var myHeaders = new Headers();
+myHeaders.append('pragma', 'no-cache');
+myHeaders.append('cache-control', 'no-cache');
+
+var myInit = {
+  method: 'GET',
+  headers: myHeaders,
+};
+
+var myRequest = new Request('./hiring.json');
+fetch(myRequest, myInit)
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.log(error));
