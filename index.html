@@ -40,7 +40,7 @@ fetch(myRequest, myInit)
       .then(data => {
             let drives = data.data.drives;
             let tableId = document.getElementById('tablebody');
-            let markuo = ""
+            let markup = ""
             drives.forEach((dr, index) => {
                 markup += "<tr>";
                 markup += "<td>"+dr.company+"</td>";
