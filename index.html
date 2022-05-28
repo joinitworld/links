@@ -38,7 +38,7 @@ fetch(myRequest, myInit)
       .then(data => {
             let drives = data.data.drives;
             let tableId = document.getElementById('tablebody');
-            let markup = ""
+            let markup = "";
             drives.forEach((dr, index) => {
                 markup += "<tr>";
                 markup += "<td>"+dr.company+"</td>";
@@ -54,7 +54,7 @@ fetch(myRequest, myInit)
                 });
                 markup += "</tr>" 
             })
-            tableId.append(markup);
+            tableId.innerHTML += markup;
             
        })
       .catch(error => console.log(error));
