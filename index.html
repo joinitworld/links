@@ -8,41 +8,18 @@
 <h2>HTML Table</h2>
 
 <table>
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Ernst Handel</td>
-    <td>Roland Mendel</td>
-    <td>Austria</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>Helen Bennett</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>Yoshi Tannamuri</td>
-    <td>Canada</td>
-  </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Giovanni Rovelli</td>
-    <td>Italy</td>
-  </tr>
+   <thead>
+      <tr>
+        <th>Company</th>
+        <th>Title</th>
+        <th>Last Date</th>
+        <th>Qualifications</th>
+        <th>Batch</th>
+        <th>Links</th>
+      </tr>
+    </thead>
+    <tbody id="tablebody">
+    </tbody>
 </table>
 
 </body>
@@ -60,7 +37,28 @@ var myInit = {
 var myRequest = new Request('./hiring.json');
 fetch(myRequest, myInit)
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+            let drives = data.data.drives;
+            let tableId = document.getElementById('tablebody');
+            let markuo = ""
+            drives.forEach((dr, index) => {
+                markup += "<tr>";
+                markup += "<td>"+dr.company+"</td>";
+                markup += "<td>"+dr.title+"</td>";
+                markup += "<td>"+dr.lastDate+"</td>";
+                markup += "<td>"+dr.qualification+"</td>";
+                markup += "<td>"+dr.batch+"</td>";
+                markup += "<td><tr>"+
+                dr.links.forEach((lk, i) => {
+                   markup += "<td>"+lk.alt+"</td>";
+                   markup += "<td>"+lk.link+"</td>";
+                   markup+"</tr></td>"
+                });
+                markup += "</tr>" 
+            })
+            tableId.append(markup);
+            
+       })
       .catch(error => console.log(error));
 </script>
 
