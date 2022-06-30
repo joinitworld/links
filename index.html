@@ -10,53 +10,22 @@
       <tr>
         <th>Company</th>
         <th>Title</th>
-        <th>Last Date</th>
-        <th>Qualifications</th>
-        <th>Batch</th>
-        <th>Links</th>
+        <th>Apply Links</th>
       </tr>
     </thead>
-    <tbody id="tablebody">
+    <tbody>
+        <tr>
+        <th>Company</th>
+        <th>Title</th>
+        <th>Apply Links</th>
+      </tr>
+        <tr>
+        <th>Company</th>
+        <th>Title</th>
+        <th>Apply Links</th>
+      </tr>
     </tbody>
 </table>
 
 </body>
 </html>
-<script>
-var myHeaders = new Headers();
-myHeaders.append('pragma', 'no-cache');
-myHeaders.append('cache-control', 'no-cache');
-
-var myInit = {
-  method: 'GET',
-  headers: myHeaders,
-};
-
-var myRequest = new Request('./hiring.json');
-fetch(myRequest, myInit)
-      .then(response => response.json())
-      .then(data => {
-            let drives = data.data.drives;
-            let tableId = document.getElementById('tablebody');
-            let markup = "";
-            drives.forEach((dr, index) => {
-                markup += "<tr>";
-                markup += "<td>"+dr.company+"</td>";
-                markup += "<td>"+dr.title+"</td>";
-                markup += "<td>"+dr.lastDate+"</td>";
-                markup += "<td>"+dr.qualification+"</td>";
-                markup += "<td>"+dr.batch+"</td>";
-                markup += "<td><tr>"+
-                dr.links.forEach((lk, i) => {
-                   markup += "<td>"+lk.alt+"</td>";
-                   markup += "<td>"+lk.link+"</td>";
-                   markup+"</tr></td>"
-                });
-                markup += "</tr>" 
-            })
-            tableId.innerHTML += markup;
-            
-       })
-      .catch(error => console.log(error));
-</script>
-
